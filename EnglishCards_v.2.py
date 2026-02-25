@@ -33,7 +33,7 @@ DB_HOST = "localhost"
 DB_PORT = "5432"
 DB_NAME = "english_card"
 DB_USER = "postgres"
-DB_PASSWORD = "Liepaja170390"  # ВВЕДИТЕ СВОЙ ПАРОЛЬ
+DB_PASSWORD = "postgres2026"
 # ==================================================
 
 # Состояния для разговора
