@@ -1,0 +1,37 @@
+2026-02-17 21:13:40,548 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-17 21:16:54,074 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-17 21:18:50,939 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-17 21:19:12,995 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-20 23:12:45,283 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-20 23:31:29,070 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-20 23:35:10,653 - __main__ - ERROR - Ошибка создания пула соединений: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-21 00:33:27,570 - __main__ - INFO - ✅ Бот запускается с параметрами:
+2026-02-21 00:33:27,570 - __main__ - INFO -    DB_HOST: localhost
+2026-02-21 00:33:27,570 - __main__ - INFO -    DB_NAME: english_card
+2026-02-21 00:33:27,570 - __main__ - INFO -    DB_USER: postgres
+2026-02-21 00:35:29,497 - __main__ - INFO - ✅ Бот запускается с параметрами:
+2026-02-21 00:35:29,498 - __main__ - INFO -    DB_HOST: localhost
+2026-02-21 00:35:29,498 - __main__ - INFO -    DB_NAME: english_card
+2026-02-21 00:35:29,498 - __main__ - INFO -    DB_USER: postgres
+2026-02-21 00:38:26,963 - __main__ - INFO - ✅ Бот запускается с параметрами:
+2026-02-21 00:38:26,968 - __main__ - INFO -    DB_HOST: localhost
+2026-02-21 00:38:26,968 - __main__ - INFO -    DB_NAME: english_card
+2026-02-21 00:38:26,968 - __main__ - INFO -    DB_USER: postgres
+2026-02-21 00:38:27,283 - __main__ - ERROR - ❌ Ошибка подключения к PostgreSQL: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-21 00:38:27,283 - __main__ - ERROR -    Параметры: host=localhost, port=5432, db=english_card, user=postgres
+2026-02-21 00:38:27,284 - __main__ - ERROR - ❌ Ошибка при инициализации БД: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-21 00:38:27,284 - __main__ - ERROR - Проверьте:
+2026-02-21 00:38:27,284 - __main__ - ERROR - 1. Запущен ли PostgreSQL (служба postgresql)
+2026-02-21 00:38:27,284 - __main__ - ERROR - 2. Правильность пароля в DB_PASSWORD
+2026-02-21 00:38:27,284 - __main__ - ERROR - 3. Что база данных english_card существует
+2026-02-21 00:43:21,221 - __main__ - INFO - ? ??? ??????????? ? ???????????:
+2026-02-21 00:43:21,221 - __main__ - INFO -    DB_HOST: localhost
+2026-02-21 00:43:21,221 - __main__ - INFO -    DB_NAME: english_card
+2026-02-21 00:43:21,221 - __main__ - INFO -    DB_USER: postgres
+2026-02-21 00:43:21,310 - __main__ - ERROR - ? ?????? ??????????? ? PostgreSQL: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-21 00:43:21,310 - __main__ - ERROR -    ?????????: host=localhost, port=5432, db=english_card, user=postgres
+2026-02-21 00:43:21,310 - __main__ - ERROR - ? ?????? ??? ????????????? ??: 'utf-8' codec can't decode byte 0xc2 in position 61: invalid continuation byte
+2026-02-21 00:43:21,310 - __main__ - ERROR - ?????????:
+2026-02-21 00:43:21,310 - __main__ - ERROR - 1. ??????? ?? PostgreSQL (?????? postgresql)
+2026-02-21 00:43:21,310 - __main__ - ERROR - 2. ???????????? ?????? ? DB_PASSWORD
+2026-02-21 00:43:21,310 - __main__ - ERROR - 3. ??? ???? ?????? english_card ??????????
