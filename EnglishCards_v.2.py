@@ -11,7 +11,7 @@ import random
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from psycopg2 import sql
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import (
@@ -48,7 +48,8 @@ class Database:
         self.ensure_database_exists()
         self.init_db()
 
-    def ensure_database_exists(self):
+    @staticmethod
+    def ensure_database_exists():
         """Проверяет существование БД и создает её при необходимости"""
         try:
             # Подключаемся к стандартной базе данных 'postgres'
@@ -83,7 +84,8 @@ class Database:
             logger.error("3. Доступность пользователя postgres")
             raise
 
-    def get_connection(self):
+    @staticmethod
+    def get_connection():
         """Получение соединения с нашей БД"""
         try:
             conn = psycopg2.connect(
@@ -337,7 +339,7 @@ class EnglishCardBot:
     def get_answer_keyboard(options: List[str]) -> ReplyKeyboardMarkup:
         """
         Клавиатура с вариантами ответов
-        4 варианта ответа
+        4 варианта ответа + кнопки меню внизу (как в дизайне)
         """
         keyboard = [
             [KeyboardButton(options[0]), KeyboardButton(options[1])],
@@ -370,7 +372,7 @@ class EnglishCardBot:
         return options
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        """Приветственное сообщение"""
+        """Приветственное сообщение (точно как в задании)"""
         welcome_text = (
             "Привет 👋 Давай попрактикуемся в английском языке. "
             "Тренировки можешь проходить в удобном для себя темпе.\n\n"
@@ -417,7 +419,7 @@ class EnglishCardBot:
         context.user_data['current'] = {'ru': ru, 'en': en, 'id': wid, 'type': wtype}
         context.user_data['options'] = options
 
-        # Отправляем сообщение с клавиатурой внизу
+        # Отправляем сообщение с клавиатурой внизу (как в дизайне)
         text = f"*Выбери перевод слова:*\n- {ru}"
         await update.message.reply_text(
             text,
@@ -507,13 +509,13 @@ class EnglishCardBot:
             reply_markup=self.get_answer_keyboard(options)
         )
 
-    async def handle_menu(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    async def handle_menu(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> Optional[int]:
         """Обрабатывает нажатия на кнопки меню"""
         text = update.message.text
 
         if text == "Дальше 🚀":
             await self.next_word(update, context)
-
+            return None
         elif text == "Добавить слово ✨":
             await update.message.reply_text(
                 "✏️ *Добавление нового слова*\n\n"
@@ -524,7 +526,6 @@ class EnglishCardBot:
                 reply_markup=ReplyKeyboardMarkup([[KeyboardButton("/cancel")]], resize_keyboard=True)
             )
             return ADDING_WORD
-
         elif text == "Удалить слово":
             words = self.db.get_user_personal_words(update.effective_user.id)
 
@@ -550,9 +551,11 @@ class EnglishCardBot:
                 reply_markup=ReplyKeyboardMarkup([[KeyboardButton("/cancel")]], resize_keyboard=True)
             )
             return DELETING_WORD
-
         elif text == "🔄 Попробовать снова":
             await self.retry(update, context)
+            return None
+
+        return None
 
     async def add_word(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
         """Добавление нового слова"""
@@ -662,7 +665,7 @@ class EnglishCardBot:
             self.handle_answer
         ))
 
-        logger.info("🤖 Бот запущен с кнопками внизу как в дизайне!")
+        logger.info("🤖 Бот запущен!")
         logger.info("✅ 10 общих слов загружено")
         logger.info("✅ 3 таблицы в базе данных PostgreSQL")
         logger.info("✅ Автоматическое создание БД работает")
